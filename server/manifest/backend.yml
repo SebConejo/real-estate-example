@@ -1,0 +1,59 @@
+# This is a sample file for a backend.yml manifest backend.
+# Read more about the manifest format here: https:/manifest.build/docs
+
+name: Real Estate Listing App 🏡
+entities:
+  Residence:
+    seedCount: 5
+    properties:
+      - title
+      - { name: price, type: number }
+      - { name: location, type: text }
+      - { name: city, type: text }
+      - { name: bedrooms, type: number }
+      - { name: bathrooms, type: number }
+      - { name: surfaceArea, type: number }
+      - { name: description, type: text }
+      - { name: image, type: image }
+      - {
+          name: type,
+          type: choice,
+          options: { values: ['House', 'Apartment', 'Condo'] },
+        }
+    belongsTo:
+      - Agent
+    policies:
+      read:
+        - access: public
+      update:
+        - access: public
+
+  Agent:
+    properties:
+      - name
+      - { name: phone, type: text }
+      - { name: email, type: email }
+      - { name: photo, type: image }
+    policies:
+      read:
+        - access: public
+      update:
+        - access: public
+
+  Inquiry:
+    properties:
+      - name
+      - { name: message, type: text }
+      - { name: email, type: email }
+    belongsTo:
+      - Residence
+    middlewares:
+      beforeCreate:
+        - handler: sendInquiryEmail
+    policies:
+      read:
+        - access: public
+      create:
+        - access: public
+      update:
+        - access: public
