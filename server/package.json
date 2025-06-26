@@ -12,7 +12,7 @@
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "mailgun-js": "^0.22.0",
-    "manifest": "^4.12.2",
+    "manifest": "^4.13.0",
     "nodemailer": "^7.0.3"
   }
 }
