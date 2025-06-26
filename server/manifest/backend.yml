@@ -14,7 +14,18 @@ entities:
       - { name: bathrooms, type: number }
       - { name: surfaceArea, type: number }
       - { name: description, type: text }
-      - { name: image, type: image }
+      - {
+          name: image,
+          type: image,
+          options:
+            {
+              sizes:
+                {
+                  thumbnail: { height: 90, width: 90 },
+                  medium: { width: 1000 },
+                },
+            },
+        }
       - {
           name: type,
           type: choice,
